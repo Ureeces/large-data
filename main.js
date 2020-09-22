@@ -22,6 +22,51 @@
 // - If you cannot use destructuring parse the data in the way that you know how
 // - You will need to manipulate some of the data to get the formatted output, so use your vanilla js
 // - Remember, the data should output to the terminal
+const addressList = (data) => {
+  let genderPlaceHolder = 'female'; // Working on correct output first, then inputting choice
+  console.log('ADDRESS LIST');
+  
+  data.results.forEach(person => {
+    let isGender = person.gender === genderPlaceHolder ? true : false; // Test for the gender
+    if(isGender) {
+      // Working on saving correct data into variables for correct output
+      
+      // Title
+      let fullName = `${person.name.title} ${person.name.first} ${person.name.last}`;
+
+      // Street Address
+      let streetAddress = `${person.location.street.number} ${person.location.street.name}`; 
+
+      // City and State
+      let cityState = `${person.location.city} ${person.location.state}`;
+
+      // Country and postcode
+      let countryPost = `${person.location.country} ${person.location.postcode}`;
+
+      // Email
+      let email = `${person.email}`;
+      
+      // Birthday Formatting
+      let unFormatBDay = person.dob.date.substring(0, 10);
+      unFormatBDay;
+      let month = unFormatBDay.substring(5, 7);
+      let day = unFormatBDay.substring(8, 10);
+      let year = unFormatBDay.substring(0, 4);
+      let bday = `${month}-${day}-${year}`;
+      // --------------------------------------------------------
+
+      // Logging out data
+      console.log(fullName);
+      console.log(streetAddress);
+      console.log(cityState);
+      console.log(countryPost);
+      console.log('Email: ', email);
+      console.log('Birthday: ', bday);
+      console.log('------------------'); // Signals end of current person
+    }
+  })
+}
+
 
 
 // DATASET:
@@ -176,3 +221,5 @@ let data = {
   ],
   info: { seed: 'ed2c7d4d04121f12', results: 4, page: 1, version: '1.3' }
 }; 
+
+addressList(data);
