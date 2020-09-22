@@ -30,24 +30,36 @@ const addressList = (data) => {
     let isGender = person.gender === genderPlaceHolder ? true : false; // Test for the gender
     if(isGender) {
       // Working on saving correct data into variables for correct output
-      
-      // Title
-      let fullName = `${person.name.title} ${person.name.first} ${person.name.last}`;
+      // With destructuring
+      const {
+        name: {title, first, last},
+        location: {
+          street: {number, name},
+          city, state,
+          country, postcode
+        },
+        email,
+        dob: {date}
+      } = person;
 
-      // Street Address
-      let streetAddress = `${person.location.street.number} ${person.location.street.name}`; 
+      // Without destructing
+      // // Title
+      // let fullName = `${person.name.title} ${person.name.first} ${person.name.last}`;
 
-      // City and State
-      let cityState = `${person.location.city} ${person.location.state}`;
+      // // Street Address
+      // let streetAddress = `${person.location.street.number} ${person.location.street.name}`; 
 
-      // Country and postcode
-      let countryPost = `${person.location.country} ${person.location.postcode}`;
+      // // City and State
+      // let cityState = `${person.location.city} ${person.location.state}`;
 
-      // Email
-      let email = `${person.email}`;
+      // // Country and postcode
+      // let countryPost = `${person.location.country} ${person.location.postcode}`;
+
+      // // Email
+      // let email = `${person.email}`;
       
       // Birthday Formatting
-      let unFormatBDay = person.dob.date.substring(0, 10);
+      let unFormatBDay = date.substring(0, 10);
       unFormatBDay;
       let month = unFormatBDay.substring(5, 7);
       let day = unFormatBDay.substring(8, 10);
@@ -56,18 +68,25 @@ const addressList = (data) => {
       // --------------------------------------------------------
 
       // Logging out data
-      console.log(fullName);
-      console.log(streetAddress);
-      console.log(cityState);
-      console.log(countryPost);
-      console.log('Email: ', email);
-      console.log('Birthday: ', bday);
+      // With destructuring
+      console.log(`${title} ${first} ${last}`);
+      console.log(`${number} ${name}`);
+      console.log(`${city} ${state}`);
+      console.log(`${country} ${postcode}`);
+      console.log(email);
+      console.log(bday);
+
+      // Without destructuring
+      // console.log(fullName);
+      // console.log(streetAddress);
+      // console.log(cityState);
+      // console.log(countryPost);
+      // console.log('Email: ', email);
+      // console.log('Birthday: ', bday);
       console.log('------------------'); // Signals end of current person
     }
   })
 }
-
-
 
 // DATASET:
 let data = {
