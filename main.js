@@ -41,22 +41,6 @@ const addressList = (data) => {
         email,
         dob: {date}
       } = person;
-
-      // Without destructing
-      // // Title
-      // let fullName = `${person.name.title} ${person.name.first} ${person.name.last}`;
-
-      // // Street Address
-      // let streetAddress = `${person.location.street.number} ${person.location.street.name}`; 
-
-      // // City and State
-      // let cityState = `${person.location.city} ${person.location.state}`;
-
-      // // Country and postcode
-      // let countryPost = `${person.location.country} ${person.location.postcode}`;
-
-      // // Email
-      // let email = `${person.email}`;
       
       // Birthday Formatting
       let unFormatBDay = date.substring(0, 10);
@@ -73,16 +57,8 @@ const addressList = (data) => {
       console.log(`${number} ${name}`);
       console.log(`${city} ${state}`);
       console.log(`${country} ${postcode}`);
-      console.log(email);
-      console.log(bday);
-
-      // Without destructuring
-      // console.log(fullName);
-      // console.log(streetAddress);
-      // console.log(cityState);
-      // console.log(countryPost);
-      // console.log('Email: ', email);
-      // console.log('Birthday: ', bday);
+      console.log('Email:', email);
+      console.log('Birthday:', bday);
       console.log('------------------'); // Signals end of current person
     }
   })
